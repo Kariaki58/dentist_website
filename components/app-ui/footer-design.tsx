@@ -15,37 +15,28 @@ import { BsDribbble, BsFacebook, BsGithub, BsInstagram, BsTwitter } from "react-
 
 export function FooterDesign() {
 return (
-    <Footer container>
+    <Footer container className="bg-orange-950 rounded-none">
         <div className="w-full">
             <div className="grid w-full justify-between sm:flex sm:justify-between md:flex md:grid-cols-1">
-            <div>
-                <FooterBrand
-                href="https://flowbite.com"
-                src="https://flowbite.com/docs/images/logo.svg"
-                alt="Flowbite Logo"
-                name="Flowbite"
-                />
-            </div>
+            <h1 className="text-4xl font-bold text-white">
+                DENTIST
+            </h1>
             <div className="grid grid-cols-2 gap-8 sm:mt-4 sm:grid-cols-3 sm:gap-6">
                 <div>
-                <FooterTitle title="about" />
+                <FooterTitle title="links" className="text-white"/>
                 <FooterLinkGroup col>
-                    <FooterLink href="#">Flowbite</FooterLink>
-                    <FooterLink href="#">Tailwind CSS</FooterLink>
+                    <FooterLink href="/" className="text-white">Home</FooterLink>
+                    <FooterLink href="/about" className="text-white">About Us</FooterLink>
+                    <FooterLink href="/services" className="text-white">Services</FooterLink>
+                    <FooterLink href="/contact" className="text-white">Contact</FooterLink>
+                    <FooterLink href="/appointment" className="text-white">Make an Appointment</FooterLink>
                 </FooterLinkGroup>
                 </div>
                 <div>
-                <FooterTitle title="Follow us" />
+                <FooterTitle title="Legal" className="text-white"/>
                 <FooterLinkGroup col>
-                    <FooterLink href="#">Github</FooterLink>
-                    <FooterLink href="#">Discord</FooterLink>
-                </FooterLinkGroup>
-                </div>
-                <div>
-                <FooterTitle title="Legal" />
-                <FooterLinkGroup col>
-                    <FooterLink href="#">Privacy Policy</FooterLink>
-                    <FooterLink href="#">Terms &amp; Conditions</FooterLink>
+                    <FooterLink href="/policy" className="text-white">Privacy Policy</FooterLink>
+                    <FooterLink href="/conditions" className="text-white">Terms &amp; Conditions</FooterLink>
                 </FooterLinkGroup>
                 </div>
             </div>

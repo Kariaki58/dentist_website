@@ -22,7 +22,9 @@ export default function Home() {
       <HomeService />
       <Reviews />
       <HomeContact />
-      <FooterDesign />
+      <div className="">
+        <FooterDesign />
+      </div>
     </div>
   );
 }
