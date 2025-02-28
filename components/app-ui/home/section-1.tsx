@@ -6,7 +6,7 @@ import doctor from "@/public/doctor.png";
 
 export default function SectionAbout() {
     return (
-        <section className="flex items-center">
+        <section className="flex items-center my-20">
             <Image
                 src={doctor}
                 alt="Doctor"
@@ -22,12 +22,12 @@ export default function SectionAbout() {
                     The Best <span className="text-orange-500">Dental Clinic</span> That You Can Trust
                 </h2>
                 <p className="pr-20">
-                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo 
-                    ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient.
+                    Experience top-quality dental care with a team dedicated to your smile. 
+                    We provide gentle, effective treatments in a comfortable and welcoming environment.
                 </p>
                 <p className="pr-24">
-                    Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. 
-                    Sed fringilla mauris sit amet nibh.
+                    Get expert dental care from a team that puts your smile first. We offer gentle, 
+                    high-quality treatments in a relaxing and friendly environment.
                 </p>
                 <ul className="flex gap-10 my-20">
                     <ul className="space-y-5 font-bold text-lg">
