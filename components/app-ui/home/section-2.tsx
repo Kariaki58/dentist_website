@@ -2,14 +2,15 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import doctor from "@/public/doctor.png";
+import doctor from "@/public/home-images/doctor.png";
 import FormChooseUs from "./form-choose-us";
+
 
 export default function SectionReason() {
     const [dentalPercent, setDentalPercent] = useState<number>(0);
     const [cosmeticPercent, setCosmeticPercent] = useState<number>(0);
-    const targetDental:number = 95;
-    const targetCosmetic:number = 85;
+    const targetDental: number = 95;
+    const targetCosmetic: number = 85;
 
     useEffect(() => {
         const interval = setInterval(() => {

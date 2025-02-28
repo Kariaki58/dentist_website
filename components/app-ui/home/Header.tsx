@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import header_picture from "@/public/full-card.svg";
-import bigger_card from "@/public/bigger-card.png";
+import bigger_card from "@/public/home-images/bigger-card.png";
 import { Button } from "@/components/ui/button";
 import Form from "./Form";
 

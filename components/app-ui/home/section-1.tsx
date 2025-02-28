@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { BadgeCheck } from "lucide-react";
-import doctor from "@/public/doctor.png";
+import doctor from "@/public/home-images/doctor.png";
 
 
 export default function SectionAbout() {
