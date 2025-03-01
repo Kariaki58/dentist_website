@@ -1,7 +1,6 @@
 
 import {
     Footer,
-    FooterBrand,
     FooterCopyright,
     FooterDivider,
     FooterIcon,
