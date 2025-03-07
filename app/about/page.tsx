@@ -20,7 +20,7 @@ export default function About() {
                 </div>
                 <div className="flex justify-center items-center w-full max-w-xl mx-auto mt-6">
                     <div className="space-y-3">
-                        <h2 className="text-5xl text-center">We Are <span className="text-orange-500 font-bold">Dentic</span></h2>
+                        <h2 className="text-5xl text-center font-bold">We Are <span className="text-orange-500 font-bold">Dentic</span></h2>
                         <p className="text-gray-600 text-center px-10">
                             Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. 
                             Duis leo. Sed fringilla mauris sit amet nibh.

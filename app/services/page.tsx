@@ -10,9 +10,7 @@ import { FooterDesign } from "@/components/app-ui/footer-design";
 export default function Services() {
     return (
         <main>
-            <header className="bg-orange-100 h-[70vh]">
-                <ServiceHeader />
-            </header>
+            <ServiceHeader btnText="Our Services" content="Our" title="Dental Services" description="Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh." />
             <HomeService />
             <Reviews />
             <BookingComponent />
