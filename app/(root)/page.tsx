@@ -1,4 +1,3 @@
-import { FooterDesign } from "@/components/app-ui/footer-design";
 import HomeContact from "@/components/app-ui/home/contact";
 import Header from "@/components/app-ui/home/Header";
 import Competence from "@/components/app-ui/home/home-competence";
