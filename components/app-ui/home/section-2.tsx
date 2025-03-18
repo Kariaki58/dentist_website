@@ -22,8 +22,8 @@ export default function SectionReason() {
     }, []);
 
     return (
-        <section className="flex max-w-screen-lg items-center px-14 relative my-20">
-            <div className="w-1/2">
+        <section className="flex max-w-screen-lg flex-col lg:flex-row lg:mx-auto xl:mx-0 lg:items-center px-5 lg:px-14 relative my-20">
+            <div className="w-full lg:w-1/2">
                 <Button variant="outline" className="py-3 text-orange-500 hover:text-orange-600 cursor-auto mb-2">
                     Why Choose Us
                 </Button>
@@ -73,10 +73,13 @@ export default function SectionReason() {
                     />
                 </div>
             </div>
-            <Image src={doctor} alt="Doctor" width={500} height={500} />
-            <div className="absolute -right-60">
-                <FormChooseUs />
+            <div>
+                <Image className="opacity-0 md:opacity-100 lg:opacity-0 xl:opacity-100" src={doctor} alt="Doctor" width={500} height={500} />
+                <div className=" absolute right-0 top-[35rem] sm:top-[30rem] md:top-96 lg:top-0 xl:-right-60 xl:top-0">
+                    <FormChooseUs />
+                </div>
             </div>
+            
         </section>
     );
 }

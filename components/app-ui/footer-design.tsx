@@ -16,7 +16,7 @@ return (
     <Footer container className="bg-orange-950 rounded-none">
         <div className="w-full">
             <div className="grid w-full justify-between sm:flex sm:justify-between md:flex md:grid-cols-1">
-            <div>
+            <div className="mb-10">
                 <h1 className="text-4xl font-bold text-white">
                     DENTIST
                 </h1>

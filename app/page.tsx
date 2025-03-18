@@ -19,9 +19,10 @@ export default function Home() {
       <SectionReason />
       <HomeStats />
       <HomeGallery />
-      <HomeService />
+      {/* <HomeService />
       <Reviews />
-      <HomeContact />
+      <HomeContact /> */}
+      <div className="h-screen"></div>
       <div className="">
         <FooterDesign />
       </div>

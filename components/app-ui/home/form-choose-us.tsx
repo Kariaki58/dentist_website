@@ -2,7 +2,7 @@ import PhoneDialer from "./PhoneDialer";
 
 export default function FormChooseUs() {
     return (
-        <aside className="bg-white p-10 w-96 rounded-sm shadow-orange-500 shadow-sm">
+        <aside className="bg-white p-10 w-96 rounded-sm shadow-orange-500 shadow-sm max-w-md">
             <h2 className="text-3xl font-bold mb-3">Don&apos;t Hesitate to Call Us</h2>
             <p className="mb-5 text-gray-700">
                 Have questions or need assistance? Our team is here to help! 
