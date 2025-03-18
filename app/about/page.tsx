@@ -7,9 +7,6 @@ import BookingComponent from "@/components/app-ui/booking-component";
 import TeamSection from "@/components/app-ui/about-us/team-section";
 import Faq from "@/components/app-ui/about-us/Faq";
 import HomeContact from "@/components/app-ui/home/contact";
-import Reviews from "@/components/app-ui/Reviews";
-import { FooterDesign } from "@/components/app-ui/footer-design";
-
 
 export default function About() {
     return (
@@ -39,7 +36,6 @@ export default function About() {
             <TeamSection />
             <Faq />
             <HomeContact />
-            <FooterDesign />
         </>
     );
 }

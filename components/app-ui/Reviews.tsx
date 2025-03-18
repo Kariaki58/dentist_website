@@ -33,12 +33,12 @@ export default function Reviews() {
         }
     ]
     return (
-        <section className="space-y-5 max-w-screen-lg mx-auto my-20">
+        <section className="space-y-5 max-w-screen-lg mx-auto my-20 px-5 lg:px-0">
             <div className="flex justify-center">
                 <Button variant="outline" className="py-3 text-orange-500 hover:text-orange-600 cursor-auto">Our Testimonial</Button>
             </div>
             <h1 className="text-center text-3xl font-bold">The <span className="text-orange-500">Honest Review</span> From Our Client</h1>
-            <p className="px-72 text-center text-gray-600">
+            <p className="px-5 lg:px-72 text-center text-gray-600">
                 Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. 
                 Cum sociis natoque penatibus et magnis dis parturient.
             </p>

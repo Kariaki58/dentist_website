@@ -3,33 +3,39 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
-
 export default function HomeContact() {
-    return  (
-        <section className="bg-orange-50 max-w-screen-xl mx-auto py-20 px-10 flex items-center relative mt-40 mb-20 rounded-sm h-[30rem]">
-            <div className="w-1/2">
-                <Button variant="outline" className="py-3 text-orange-500 hover:text-orange-600 rounded-none cursor-auto text-xl bg-transparent border-orange-200">
+    return (
+        <section className="bg-orange-50 max-w-7xl mx-auto py-5 px-6 md:px-12 lg:px-16 rounded-xl mt-20 mb-10 flex flex-col-reverse lg:flex-row items-center relative overflow-hidden">
+            {/* Left Content */}
+            <div className="lg:w-1/2 text-center lg:text-left">
+                <Button variant="outline" className="py-2 px-6 text-orange-600 border-orange-500 hover:bg-orange-500 hover:text-white transition">
                     Contact Us
                 </Button>
-                <h2 className="text-5xl font-bold mt-5">
-                    Become The Next Our <span className="text-orange-500">Happy Client</span>
+                <h2 className="text-4xl md:text-5xl font-bold mt-4">
+                    Become Our <span className="text-orange-500">Happy Client</span>
                 </h2>
-                <p className="text-gray-600 pr-20 mt-5">
-                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. 
-                    Aenean commodo ligula eget dolor. Aenean massa.
+                <p className="text-gray-600 mt-4 leading-relaxed max-w-lg mx-auto lg:mx-0">
+                    Join thousands of satisfied clients receiving top-tier dental care from our expert professionals.
                 </p>
-                <div className="mt-16">
-                    <Link href="/appointment" className="bg-orange-500 text-white p-4 rounded-md">Make an Appointment</Link>
+                <div className="mt-8">
+                    <Link href="/appointment">
+                        <Button className="bg-orange-500 text-white p-8 rounded-lg shadow-md hover:bg-orange-700 transition">
+                            Make an Appointment
+                        </Button>
+                    </Link>
                 </div>
-
             </div>
-            <Image
-                src={doctor}
-                alt="doctor"
-                width={538}
-                height={400}
-                className="absolute -top-32 right-10"
-            />
+
+            {/* Right Image */}
+            <div className="lg:w-1/2 mb-10 flex justify-center">
+                <Image 
+                    src={doctor} 
+                    alt="Doctor" 
+                    width={500} 
+                    height={400} 
+                    className="object-contain"
+                />
+            </div>
         </section>
-    )
+    );
 }

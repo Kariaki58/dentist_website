@@ -4,7 +4,6 @@ import Reviews from "@/components/app-ui/Reviews";
 import BookingComponent from "@/components/app-ui/booking-component";
 import Faq from "@/components/app-ui/about-us/Faq";
 import HomeContact from "@/components/app-ui/home/contact";
-import { FooterDesign } from "@/components/app-ui/footer-design";
 
 
 export default function Services() {
@@ -18,7 +17,6 @@ export default function Services() {
                 <Faq />
             </div>
             <HomeContact />
-            <FooterDesign />
         </main>
     );
 }
