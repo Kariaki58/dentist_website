@@ -18,7 +18,7 @@ import {
   SettingsIcon,
   UsersIcon,
 } from "lucide-react"
-
+import Link from "next/link"
 import { NavDocuments } from "@/components/nav-documents"
 import { NavMain } from "@/components/nav-main"
 import { NavSecondary } from "@/components/nav-secondary"
@@ -35,34 +35,29 @@ import {
 
 const data = {
   user: {
-    name: "shadcn",
-    email: "m@example.com",
-    avatar: "/avatars/shadcn.jpg",
+    name: "kariaki",
+    email: "kariaki@gmail.com",
+    avatar: "/public/profile/profile-1.jpg",
   },
   navMain: [
     {
       title: "Dashboard",
-      url: "#",
+      url: "/dashboard",
       icon: LayoutDashboardIcon,
     },
     {
-      title: "Lifecycle",
-      url: "#",
+      title: "Services",
+      url: "/dashboard/services",
       icon: ListIcon,
     },
     {
-      title: "Analytics",
-      url: "#",
-      icon: BarChartIcon,
-    },
-    {
-      title: "Projects",
-      url: "#",
-      icon: FolderIcon,
+      title: "Customers",
+      url: "/dashboard/customers",
+      icon: UsersIcon,
     },
     {
       title: "Team",
-      url: "#",
+      url: "/dashboard/team",
       icon: UsersIcon,
     },
   ],
@@ -160,10 +155,10 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
               asChild
               className="data-[slot=sidebar-menu-button]:!p-1.5"
             >
-              <a href="#">
+              <Link href="/">
                 <ArrowUpCircleIcon className="h-5 w-5" />
-                <span className="text-base font-semibold">Acme Inc.</span>
-              </a>
+                <span className="text-base font-semibold">Dentist</span>
+              </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>

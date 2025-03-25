@@ -46,7 +46,8 @@ export const options: NextAuthOptions = {
                         id: user._id.toString(),
                         role: user.role,
                     } as NextAuthUser;
-                } catch (error) {
+                } catch (error: any) {
+                    console.error(error);
                     return null;
                 }
             },
