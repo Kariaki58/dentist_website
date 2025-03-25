@@ -26,35 +26,29 @@ export const options: NextAuthOptions = {
         GoogleProvider({
             clientId: process.env.AUTH_GOOGLE_ID as string,
             clientSecret: process.env.AUTH_GOOGLE_SECRET as string,
-            profile: async (profile: GoogleProfile): Promise<NextAuthUser | null> => {
-                try {
-                    await connectToDatabase();
-                    let user = await User.findOne({ email: profile.email }).exec();
-                    
-                    if (!user) {
-                        user = await User.create({
-                            name: profile.name,
-                            email: profile.email,
-                            googleId: profile.sub,
-                            avatar: profile.picture,
-                            role: "admin",
-                        });
-                    }
-                    
-                    return {
-                        ...profile,
-                        id: user._id.toString(),
-                        role: user.role,
-                    } as NextAuthUser;
-                } catch (error) {
-                    console.error(error);
-                    return {
-                        id: "",
-                        name: profile.name || "Unknown",
-                        email: profile.email || "unknown@example.com",
-                        role: "user",  // Provide a safe default role
-                    };
+            profile: async (profile: GoogleProfile): Promise<NextAuthUser> => {
+                await connectToDatabase();
+                let user = await User.findOne({ email: profile.email }).exec();
+                
+                if (!user) {
+                    user = await User.create({
+                        name: profile.name,
+                        email: profile.email,
+                        googleId: profile.sub,
+                        avatar: profile.picture,
+                        role: "admin",
+                    });
                 }
+                
+                if (!user) {
+                    throw new Error("Failed to create or retrieve user.");
+                }
+
+                return {
+                    ...profile,
+                    id: user._id.toString(),
+                    role: user.role,
+                } as NextAuthUser;
             },
         }),
     ],
