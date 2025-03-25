@@ -48,7 +48,12 @@ export const options: NextAuthOptions = {
                     } as NextAuthUser;
                 } catch (error) {
                     console.error(error);
-                    return null;
+                    return {
+                        id: "",
+                        name: profile.name || "Unknown",
+                        email: profile.email || "unknown@example.com",
+                        role: "user",  // Provide a safe default role
+                    };
                 }
             },
         }),
