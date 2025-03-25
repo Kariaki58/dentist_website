@@ -9,6 +9,7 @@ import {
     FooterTitle,
 } from "flowbite-react";
 import { BsFacebook, BsInstagram, BsTwitter } from "react-icons/bs";
+import AdminButton from "../admin-button";
 
 
 export function FooterDesign() {
@@ -47,6 +48,7 @@ return (
             <FooterDivider className="text-white"/>
             <div className="w-full sm:flex sm:items-center sm:justify-between">
             <FooterCopyright className="text-white" href="#" by="Flowbite™" year={2022} />
+            <AdminButton />
             <div className="mt-4 flex space-x-6 sm:mt-0 sm:justify-center">
                 <FooterIcon href="#" icon={BsFacebook} className="text-white" />
                 <FooterIcon href="#" icon={BsInstagram} className="text-white"/>
