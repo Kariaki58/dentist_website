@@ -35,6 +35,7 @@ export async function GET(req: NextRequest) {
             }
         }, { status: 200 });
     } catch (error) {
+        console.error("Error fetching images:", error);
         return NextResponse.json(
             { message: "Internal Server Error" }, 
             { status: 500 }
@@ -98,6 +99,7 @@ export async function POST(req: NextRequest) {
 
         return NextResponse.json({ message: imageUrl }, { status: 201 });
     } catch (error) {
+        console.error("Error uploading image:", error);
         return NextResponse.json({ message: "Internal Server Error" }, { status: 500 });
     }
 }

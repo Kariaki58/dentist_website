@@ -11,6 +11,7 @@ export async function GET(req: NextRequest) {
         const teams = await Team.find();
         return NextResponse.json(teams, { status: 200 });
     } catch (error) {
+        console.error("Error fetching team members:", error);
         return NextResponse.json({ message: "Internal Server Error" }, { status: 500 });
     }
 }
@@ -76,6 +77,7 @@ export async function POST(req: NextRequest) {
 
         return NextResponse.json(newTeamMember, { status: 201 });
     } catch (error) {
+        console.error("Error creating team member:", error);
         return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
     }
 }
@@ -110,6 +112,7 @@ export async function DELETE(req: NextRequest) {
 
         return NextResponse.json(deletedTeamMember, { status: 200 });
     } catch (error) {
+        console.error("Error deleting team member:", error);
         return NextResponse.json({ message: "Internal Server Error" }, { status: 500 });
     }
 }
