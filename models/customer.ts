@@ -16,7 +16,6 @@ const CustomerSchema = new mongoose.Schema<ICustomer>({
     },
     email: {
         type: String,
-        unique: true,
     },
     phone: {
         type: String,

@@ -3,7 +3,7 @@ import AvailableSlot from "@/models/AvailableSlot";
 import Service from "@/models/services";
 import { NextResponse } from "next/server";
 import connectToDatabase from "@/lib/mongoose";
-
+import Customer from "@/models/customer";
 
 // Helper function to format time
 const formatTime = (timeString: string) => {
@@ -123,6 +123,12 @@ export async function POST(request: Request) {
             message,
             status: 'pending'
         });
+
+        const customerUpdate = await Customer.findOneAndUpdate(
+            { phone },
+            { name, email, phone },
+            { upsert: true, new: true }
+        );
         
         await appointment.save();
         
