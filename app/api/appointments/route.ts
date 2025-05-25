@@ -124,11 +124,16 @@ export async function POST(request: Request) {
             status: 'pending'
         });
 
-        const customerUpdate = await Customer.findOneAndUpdate(
-            { phone },
+        await Customer.findOneAndUpdate(
+            {
+                $or: [
+                    { email },
+                    { phone }
+                ]
+            },
             { name, email, phone },
             { upsert: true, new: true }
-        );
+        );          
         
         await appointment.save();
         

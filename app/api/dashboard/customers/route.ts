@@ -62,6 +62,8 @@ export async function GET(request: NextRequest) {
         const bookingsMap = new Map(
             bookingsCount.map(item => [item._id, item.count])
         )
+
+        console.log("Bookings Map:", bookingsMap);
         
         // Transform customers to include dynamic booking counts
         const customersWithBookings = customers.map(customer => ({
