@@ -20,7 +20,7 @@ export default function AdminButton() {
     return (
         <button 
             onClick={handleClick} 
-            className="bg-white p-2 rounded-lg hover:bg-gray-300"
+            className="bg-orange-500 text-white p-2 rounded-lg hover:bg-orange-600"
         >
             Admin Access
         </button>

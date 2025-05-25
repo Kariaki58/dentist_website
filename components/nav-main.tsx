@@ -28,7 +28,6 @@ export function NavMain({
         <SidebarMenu>
           {items.map((item) => {
             const isActive = pathname === item.url
-            console.log(pathname, item.url, isActive)
             return (
               <SidebarMenuItem key={item.title}>
                 <Link href={item.url}>

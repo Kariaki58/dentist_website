@@ -27,28 +27,32 @@ export const options: NextAuthOptions = {
             clientId: process.env.AUTH_GOOGLE_ID as string,
             clientSecret: process.env.AUTH_GOOGLE_SECRET as string,
             profile: async (profile: GoogleProfile): Promise<NextAuthUser> => {
-                await connectToDatabase();
-                let user = await User.findOne({ email: profile.email }).exec();
-                
-                if (!user) {
-                    user = await User.create({
-                        name: profile.name,
-                        email: profile.email,
-                        googleId: profile.sub,
-                        avatar: profile.picture,
-                        role: "admin",
-                    });
-                }
-                
-                if (!user) {
-                    throw new Error("Failed to create or retrieve user.");
-                }
+                try {
+                    await connectToDatabase();
+                    let user = await User.findOne({ email: profile.email }).exec();
+                    
+                    if (!user) {
+                        user = await User.create({
+                            name: profile.name,
+                            email: profile.email,
+                            googleId: profile.sub,
+                            avatar: profile.picture,
+                            role: "admin",
+                        });
+                    }
+                    
+                    if (!user) {
+                        throw new Error("Failed to create or retrieve user.");
+                    }
 
-                return {
-                    ...profile,
-                    id: user._id.toString(),
-                    role: user.role,
-                } as NextAuthUser;
+                    return {
+                        ...profile,
+                        id: user._id.toString(),
+                        role: user.role,
+                    } as NextAuthUser;
+                } catch (error) {
+                    return null;
+                }
             },
         }),
     ],

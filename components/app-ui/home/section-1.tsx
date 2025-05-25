@@ -2,6 +2,7 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { BadgeCheck } from "lucide-react";
 import doctor from "@/public/home-images/doctor.png";
+import Link from "next/link";
 
 export default function SectionAbout() {
     return (
@@ -45,12 +46,17 @@ export default function SectionAbout() {
                     </div>
                 </div>
                 <div className="flex flex-col sm:flex-row gap-5 mt-6">
-                    <Button variant="default" className="p-8 bg-orange-500 hover:text-white hover:bg-orange-700">
-                        Learn More
-                    </Button>
-                    <Button variant="outline" className="p-8 text-orange-500 hover:bg-orange-500 hover:text-white">
-                        Book an Appointment
-                    </Button>
+                    <Link href="/about">
+                        <Button variant="default" className="p-8 bg-orange-500 hover:text-white hover:bg-orange-700">
+                            Learn More
+                        </Button>
+                    </Link>
+                    <Link href="/appointment">
+                        <Button variant="outline" className="p-8 text-orange-500 hover:bg-orange-500 hover:text-white">
+                            Book an Appointment
+                        </Button>
+                    </Link>
+                    
                 </div>
             </div>
         </section>

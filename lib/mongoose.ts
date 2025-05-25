@@ -19,14 +19,12 @@ const cached: MongooseCache = globalWithMongoose._mongoose || { conn: null, prom
 
 async function connectToDatabase(): Promise<Mongoose> {
     if (cached.conn) {
-        console.log("connecting faster");
         return cached.conn;
     }
     if (!cached.promise) {
         cached.promise = mongoose.connect(uri).then((mongoose) => mongoose);
     }
     cached.conn = await cached.promise;
-    console.log("connecting slower");
     return cached.conn;
 }
 

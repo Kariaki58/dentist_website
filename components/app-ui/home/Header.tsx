@@ -16,12 +16,12 @@ export default function Header() {
                     <Button variant="outline" className="py-3 w-52 ml-6 text-orange-500 hover:text-orange-600 cursor-auto">👋 Hey! we are Dentist</Button>
                 </div>
                 <h1 className="text-3xl md:text-5xl xl:text-7xl font-bold text-center lg:text-start">
-                    Helping You to Bring Back Your <span className="text-orange-500">Happy Smile</span>
+                    Helping You Bring Back Your <span className="text-orange-500">Happy Smile</span>
                 </h1>
                 <p className="py-5 text-center lg:text-start">
                     Your smile reflects your confidence and well-being. With expert care 
                     and personalized treatments, we help restore its beauty and health. 
-                    Let us bring back the joy of smiling—because you deserve it!
+                    Let us bring back the joy of smiling because you deserve it!
                 </p>
             </div>
             <div className="w-full lg:w-1/2 h-screen relative">
@@ -34,7 +34,7 @@ export default function Header() {
                 />
             </div>
             <motion.div
-                className="absolute top-10 right-72 lg:right-96 h-24 w-40"
+                className="absolute top-30 right-72 lg:right-96 h-24 w-40"
                 animate={{ x: [0, -40, 0] }}
                 transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
             >

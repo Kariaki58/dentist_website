@@ -4,15 +4,13 @@ import * as React from "react"
 import {
   ArrowUpCircleIcon,
   MapPinCheckInside,
-  HelpCircleIcon,
   LayoutDashboardIcon,
   ListIcon,
-  SettingsIcon,
   UsersIcon,
+  Network,
 } from "lucide-react"
 import Link from "next/link"
 import { NavMain } from "@/components/nav-main"
-import { NavSecondary } from "@/components/nav-secondary"
 import { NavUser } from "@/components/nav-user"
 import {
   Sidebar,
@@ -52,21 +50,29 @@ const data = {
       icon: MapPinCheckInside,
     },
     {
+      title: "Portfolio",
+      url: "/dashboard/portfolio",
+      icon: Network,
+    },
+    {
       title: "Team",
       url: "/dashboard/team",
       icon: UsersIcon,
     },
-  ],
-  navSecondary: [
     {
-      title: "Settings",
-      url: "/dashboard/settings",
-      icon: SettingsIcon,
+      title: "Generate Review Link",
+      url: "/dashboard/tokens",
+      icon: LayoutDashboardIcon,
     },
     {
-      title: "Get Help",
-      url: "/dashboard/help",
-      icon: HelpCircleIcon,
+      title: "Pending Reviews",
+      url: "/dashboard/reviews/pending",
+      icon: LayoutDashboardIcon,
+    },
+    {
+      title: "Approved Reviews",
+      url: "/dashboard/reviews/approved",
+      icon: LayoutDashboardIcon,
     },
   ],
 }
@@ -91,7 +97,6 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       </SidebarHeader>
       <SidebarContent>
         <NavMain items={data.navMain} />
-        <NavSecondary items={data.navSecondary} className="mt-auto" />
       </SidebarContent>
       <SidebarFooter>
         <NavUser user={data.user} />

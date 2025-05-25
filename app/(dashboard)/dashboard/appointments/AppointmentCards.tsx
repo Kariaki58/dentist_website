@@ -6,9 +6,40 @@ import {
 } from "@/components/ui/card"
 import { CalendarCheck, CircleCheckBig, Clock, CopyX } from "lucide-react"
 import BookingTable from "./customer-bookings"
+import Appointment from "@/models/Appointment"
+import connectToDatabase from "@/lib/mongoose"
 
 
-export function AppointmentCard() {
+export async function AppointmentCard() {
+    let bookings = 0;
+    let confirmedBookings = 0;
+    let pendingBookings = 0;
+    let cancelledBookings = 0;
+    const error = null;
+
+
+    try {
+        await connectToDatabase();
+    
+        bookings = await Appointment.countDocuments();
+        
+        confirmedBookings = await Appointment.countDocuments({ status: 'confirmed' });
+        
+        pendingBookings = await Appointment.countDocuments({ status: 'pending' });
+        
+        cancelledBookings = await Appointment.countDocuments({ status: 'cancelled' });
+    } catch(error) {
+        error = "Failed to fetch appointment data.";
+    }
+
+    if (error) {
+        return (
+            <div className="text-red-500 text-center">
+                {error}
+            </div>
+        );
+    }
+
     return (
         <>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 px-4 lg:px-6">
@@ -19,7 +50,7 @@ export function AppointmentCard() {
                             Total Bookings
                         </CardDescription>
                         <CardTitle className="@[250px]/card:text-3xl text-2xl font-semibold tabular-nums">
-                            58
+                            {bookings}
                         </CardTitle>
                     </CardHeader>
                 </Card>
@@ -30,7 +61,7 @@ export function AppointmentCard() {
                             Confirmed Bookings
                         </CardDescription>
                         <CardTitle className="@[250px]/card:text-3xl text-2xl font-semibold tabular-nums">
-                            45
+                            {confirmedBookings}
                         </CardTitle>
                     </CardHeader>
                 </Card>
@@ -41,7 +72,7 @@ export function AppointmentCard() {
                             Pending Bookings
                         </CardDescription>
                         <CardTitle className="@[250px]/card:text-3xl text-2xl font-semibold tabular-nums">
-                            13
+                            {pendingBookings}
                         </CardTitle>
                     </CardHeader>
                 </Card>
@@ -52,7 +83,7 @@ export function AppointmentCard() {
                             Cancelled Bookings
                         </CardDescription>
                         <CardTitle className="@[250px]/card:text-3xl text-2xl font-semibold tabular-nums">
-                            5
+                            {cancelledBookings}
                         </CardTitle>
                     </CardHeader>
                 </Card>

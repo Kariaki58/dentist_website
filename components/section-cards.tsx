@@ -4,8 +4,30 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
+import Appointment from "@/models/Appointment"
+import Customer from "@/models/customer"
+import Service from "@/models/services"
 
-export function SectionCards() {
+export async function SectionCards() {
+  let bookings = 0
+  let customers = 0
+  let services = 0
+  let error = null
+
+  try {
+    bookings = await Appointment.countDocuments()
+    customers = await Customer.countDocuments()
+    services = await Service.countDocuments()
+  } catch (err) {
+    error = "Failed to fetch data."
+  }
+  if (error) {
+    return (
+      <div className="text-red-500 text-center">
+        {error}
+      </div>
+    )
+  }
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 px-4 lg:px-6">
       <Card className="@container/card">
@@ -20,7 +42,7 @@ export function SectionCards() {
         <CardHeader className="relative">
           <CardDescription>New Customers</CardDescription>
           <CardTitle className="@[250px]/card:text-3xl text-2xl font-semibold tabular-nums">
-            1,234
+            {customers}
           </CardTitle>
         </CardHeader>
       </Card>
@@ -28,7 +50,7 @@ export function SectionCards() {
         <CardHeader className="relative">
           <CardDescription>Total Bookings</CardDescription>
           <CardTitle className="@[250px]/card:text-3xl text-2xl font-semibold tabular-nums">
-            45,678
+            {bookings}
           </CardTitle>
         </CardHeader>
       </Card>
@@ -36,7 +58,7 @@ export function SectionCards() {
         <CardHeader className="relative">
           <CardDescription>All Services</CardDescription>
           <CardTitle className="@[250px]/card:text-3xl text-2xl font-semibold tabular-nums">
-            20
+            {services}
           </CardTitle>
         </CardHeader>
       </Card>

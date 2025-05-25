@@ -1,53 +1,88 @@
-import { Pencil, Trash2, Plus } from 'lucide-react';
+import { Pencil, Trash2 } from 'lucide-react';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 // Mock data type - replace with your actual service type
 type DentalService = {
-    id: string;
-    serviceName: string;
+    _id: string;
+    name: string;
     description: string;
     price: number;
     duration: number;
-    imageUrl?: string;
+    image?: string;
 };
 
 // Mock data - replace with your actual data fetching
-const mockServices: DentalService[] = [
-    {
-        id: '1',
-        serviceName: 'Teeth Whitening',
-        description: 'Professional teeth whitening treatment for a brighter smile.',
-        price: 199,
-        duration: 60,
-        imageUrl: '/service-images/service-1.jpg',
-    },
-    {
-        id: '2',
-        serviceName: 'Dental Checkup',
-        description: 'Comprehensive dental examination and cleaning.',
-        price: 99,
-        duration: 30,
-        imageUrl: '/service-images/service-2.jpg',
-    },
-    {
-        id: '3',
-        serviceName: 'Tooth Filling',
-        description: 'Treatment for cavities with composite filling material.',
-        price: 150,
-        duration: 45,
-        imageUrl: '/service-images/service-3.jpg',
-    },
-];
 
 export default function ServicesList() {
-    const [services, setServices] = useState<DentalService[]>(mockServices);
+    const [services, setServices] = useState<DentalService[]>([]);
+    const [error, setError] = useState<string | null>(null);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const fetchServices = async () => {
+            setLoading(true);
+            try {
+                const response = await fetch('/api/dashboard/services', {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                });
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    setError(errorData.error || 'Failed to load services');
+                    setLoading(false);
+                    return;
+                }
+                const result = await response.json();
+                setServices(result.message);
+                setError(null);
+            } catch (error) {
+                setError('Failed to load services');
+            } finally {
+                setLoading(false);
+            }
+        };
+        fetchServices();
+
+    }, []);
     const [deleteConfirm, setDeleteConfirm] = useState<string | null>(null);
 
-    const handleDelete = (id: string) => {
-        setServices(services.filter(service => service.id !== id));
+    const handleDelete = async (id: string) => {
+        const response = await fetch(`/api/dashboard/services/${id}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+        if (!response.ok) {
+            const errorData = await response.json();
+            setError(errorData.error || 'Failed to delete service');
+            return;
+        }
+        const updatedServices = services.filter((service) => service._id !== id);
+        setServices(updatedServices);
+        setError(null);
+        
         setDeleteConfirm(null);
     };
+    
+
+    if (loading) {
+        return (
+            <div className="text-center py-12">
+                <div className="text-gray-400 mb-4">Loading...</div>
+            </div>
+        );
+    }
+    if (error) {
+        return (
+            <div className="text-center py-12">
+                <div className="text-red-500 mb-4">{error}</div>
+            </div>
+        );
+    }
 
     if (services.length === 0) {
         return (
@@ -76,6 +111,9 @@ export default function ServicesList() {
                         Service
                     </th>
                     <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        Name
+                    </th>
+                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                         Description
                     </th>
                     <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -91,16 +129,18 @@ export default function ServicesList() {
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
                 {services.map((service) => (
-                    <tr key={service.id} className="hover:bg-gray-50 transition-colors">
+                    <tr key={service._id} className="hover:bg-gray-50 transition-colors">
                     <td className="px-6 py-4 whitespace-nowrap">
                         <div className="flex items-center">
-                        {service.imageUrl && (
+                        {service.image && (
                             <div className="flex-shrink-0 h-10 w-10 mr-4">
-                            <img className="h-10 w-10 rounded-full object-cover" src={service.imageUrl} alt={service.serviceName} />
+                                <img className="h-10 w-10 rounded-full object-cover" src={service.image} alt={service.name} />
                             </div>
                         )}
-                        <div className="font-medium text-gray-900">{service.serviceName}</div>
                         </div>
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                        <div className="text-sm text-gray-900">{service.name}</div>
                     </td>
                     <td className="px-6 py-4">
                         <div className="text-sm text-gray-600 line-clamp-2 max-w-xs">{service.description}</div>
@@ -114,17 +154,17 @@ export default function ServicesList() {
                     <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                         <div className="flex justify-end space-x-2">
                         <Link
-                            href={`/dashboard/services/?edit=${service.id}`}
+                            href={`/dashboard/services/?edit=${service._id}`}
                             className="text-orange-500 hover:text-orange-600 p-2 rounded-full hover:bg-orange-50 transition-colors"
                             title="Edit"
                         >
-                            <Pencil className="w-5 h-5" />
+                            <Pencil className="w-5 h-5"/>
                         </Link>
                         
-                        {deleteConfirm === service.id ? (
+                        {deleteConfirm === service._id ? (
                             <div className="flex items-center space-x-2">
                             <button
-                                onClick={() => handleDelete(service.id)}
+                                onClick={() => handleDelete(service._id)}
                                 className="text-red-500 hover:text-red-600 p-1 text-sm font-medium"
                             >
                                 Confirm
@@ -138,7 +178,7 @@ export default function ServicesList() {
                             </div>
                         ) : (
                             <button
-                            onClick={() => setDeleteConfirm(service.id)}
+                            onClick={() => setDeleteConfirm(service._id)}
                             className="text-gray-400 hover:text-red-500 p-2 rounded-full hover:bg-red-50 transition-colors"
                             title="Delete"
                             >
@@ -162,31 +202,31 @@ export default function ServicesList() {
             </div>
             ) : (
             services.map((service) => (
-                <div key={service.id} className="bg-white rounded-xl shadow-md p-4 hover:shadow-lg transition-shadow">
+                <div key={service._id} className="bg-white rounded-xl shadow-md p-4 hover:shadow-lg transition-shadow">
                 <div className="flex justify-between items-start">
                     <div className="flex items-center space-x-3">
-                    {service.imageUrl && (
+                    {service.image && (
                         <div className="flex-shrink-0 h-12 w-12">
-                        <img className="h-12 w-12 rounded-full object-cover" src={service.imageUrl} alt={service.serviceName} />
+                        <img className="h-12 w-12 rounded-full object-cover" src={service.image} alt={service.name} />
                         </div>
                     )}
                     <div>
-                        <h3 className="font-medium text-gray-900">{service.serviceName}</h3>
+                        <h3 className="font-medium text-gray-900">{service.name}</h3>
                         <p className="text-sm text-gray-500">${service.price.toFixed(2)} • {service.duration} min</p>
                     </div>
                     </div>
                     <div className="flex space-x-2">
                     <Link
-                        href={`/dashboard/services/?edit=${service.id}`}
+                        href={`/dashboard/services/?edit=${service._id}`}
                         className="text-orange-500 hover:text-orange-600 p-1 rounded-full hover:bg-orange-50 transition-colors"
                         title="Edit"
                     >
                         <Pencil className="w-5 h-5" />
                     </Link>
-                    {deleteConfirm === service.id ? (
+                    {deleteConfirm === service._id ? (
                         <div className="flex items-center space-x-2 bg-gray-50 rounded-full px-2">
                         <button
-                            onClick={() => handleDelete(service.id)}
+                            onClick={() => handleDelete(service._id)}
                             className="text-red-500 hover:text-red-600 text-xs font-medium"
                         >
                             Confirm
@@ -200,7 +240,7 @@ export default function ServicesList() {
                         </div>
                     ) : (
                         <button
-                        onClick={() => setDeleteConfirm(service.id)}
+                        onClick={() => setDeleteConfirm(service._id)}
                         className="text-gray-400 hover:text-red-500 p-1 rounded-full hover:bg-red-50 transition-colors"
                         title="Delete"
                         >
