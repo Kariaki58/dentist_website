@@ -1,3 +1,4 @@
+"use client"
 import { Button } from "@/components/ui/button";
 import { Suspense } from "react";
 import VideoComponent from "@/components/app-ui/about-us/video-component";
@@ -9,6 +10,8 @@ import Faq from "@/components/app-ui/about-us/Faq";
 import HomeContact from "@/components/app-ui/home/contact";
 
 export default function About() {
+
+
     return (
         <>
             <header className="bg-[#FFF5E1] min-h-[60vh] w-full relative">
