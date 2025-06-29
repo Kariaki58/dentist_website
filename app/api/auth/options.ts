@@ -11,6 +11,7 @@ declare module "next-auth" {
             name: string;
             email: string;
         };
+        accessToken?: string;
     }
 }
 
@@ -60,7 +61,10 @@ export const options: NextAuthOptions = {
     //     signIn: "/auth/signin",
     // },
     callbacks: {
-        async jwt({ token, user }) {
+        async jwt({ token, user, account }) {
+            if (account) {
+                token.accessToken = account.access_token;
+            }
             if (user) {
                 const customUser = user as { id: string; role: string };
                 token.role = customUser.role;
@@ -69,6 +73,7 @@ export const options: NextAuthOptions = {
             return token;
         },
         async session({ session, token }) {
+            session.accessToken = token.accessToken as string | undefined;
             if (session?.user) {
                 session.user.role = token.role;
                 session.user.id = token.id;

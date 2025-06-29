@@ -103,7 +103,7 @@ export default function Reviews() {
                 The <span className="text-orange-500">Honest Review</span> From Our Client
             </h1>
             <p className="px-5 lg:px-72 text-center text-gray-600">
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit...
+                Hear what our clients have to say about their experience—genuine feedback that reflects the quality of care and service we deliver every day.
             </p>
 
             {loading ? (

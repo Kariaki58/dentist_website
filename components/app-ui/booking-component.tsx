@@ -16,8 +16,9 @@ export default function BookingComponent() {
                     Book Now & Secure <span className="text-orange-500">Your Seat</span> Here
                 </h2>
                 <p className="text-gray-600 md:pr-20">
-                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
+                    Dont miss your chance to take the first step toward a brighter, healthier smile. Schedule your appointment today—limited slots available!
                 </p>
+
                 
                 {/* Contact Info */}
                 <div className="space-y-2">

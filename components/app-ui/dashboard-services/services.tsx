@@ -146,7 +146,7 @@ export default function ServicesList() {
                         <div className="text-sm text-gray-600 line-clamp-2 max-w-xs">{service.description}</div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                        <span className="text-gray-900 font-medium">${service.price.toFixed(2)}</span>
+                        <span className="text-gray-900 font-medium">₦{service.price.toFixed(2)}</span>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                         <span className="text-gray-600">{service.duration} min</span>
@@ -212,7 +212,7 @@ export default function ServicesList() {
                     )}
                     <div>
                         <h3 className="font-medium text-gray-900">{service.name}</h3>
-                        <p className="text-sm text-gray-500">${service.price.toFixed(2)} • {service.duration} min</p>
+                        <p className="text-sm text-gray-500">₦{service.price.toFixed(2)} • {service.duration} min</p>
                     </div>
                     </div>
                     <div className="flex space-x-2">

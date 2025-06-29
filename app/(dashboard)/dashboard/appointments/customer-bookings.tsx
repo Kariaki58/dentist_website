@@ -154,6 +154,10 @@ export default function BookingTable() {
         )
     }
 
+    console.log({
+        bookings
+    })
+
     return (
         <div className="p-4">
             <div className="flex justify-between items-center mb-4">

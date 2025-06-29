@@ -84,7 +84,7 @@ export default async function HomeService() {
                             <h3 className="text-xl font-semibold">{service.name}</h3>
                             <p className="text-gray-500 text-sm">{service.description}</p>
                             <div className="flex justify-between items-center mt-4">
-                                <span className="text-lg font-bold text-orange-600">${service.price}</span>
+                                <span className="text-lg font-bold text-orange-600">₦{service.price}</span>
                                 <Link href={`/appointment?serviceName=${service.name.replace(' ', '-')}`}>
                                     <Button variant="default" className="py-2 px-4 bg-orange-500 hover:bg-orange-700 text-white transition">
                                         Book Now

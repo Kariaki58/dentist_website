@@ -196,10 +196,10 @@ export default function DashboardServicePage() {
                             {/* Price */}
                             <div>
                                 <label htmlFor="price" className="block text-sm font-medium text-gray-700 mb-1">
-                                    Price (USD) *
+                                    Price (NGN) *
                                 </label>
                                 <div className="relative">
-                                    <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500">$</span>
+                                    <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500">₦</span>
                                     <input
                                     id="price"
                                     type="number"
