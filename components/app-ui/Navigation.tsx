@@ -4,6 +4,7 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { AlignJustify, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 
 
 export default function Navigation() {
@@ -20,7 +21,13 @@ export default function Navigation() {
         <header className="py-4 border-y shadow-md bg-white fixed top-0 left-0 w-full z-50">
             <nav className="flex justify-between max-w-screen-xl mx-auto items-center px-5 lg:px-2">
                 <Link className="" href="/">
-                    <h1 className="text-3xl font-bold text-black">DENTIST</h1>
+                    <Image
+                        src="/logo-dentist.png"
+                        alt="Dentist Logo"
+                        width={60}
+                        height={60}
+                        priority
+                    />
                 </Link>
                 <ul className="hidden md:flex justify-between gap-10">
                     {navItems.map((item) => (
